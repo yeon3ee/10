@@ -3,21 +3,21 @@
 
 int main(void) {
    FILE* fp;
-   char str[100];
-   int i;
-
-   fp=fopen("sample.txt","w");
+   char c;
    
-   for (i=0;i<3;i++)
+   fp=fopen("sample.txt","r");
+   if(fp == NULL)
    {
-  	printf("input a word:");
-   	scanf("%s",str); //&필요없음. 자체적으로 포인터
-  	fprintf(fp,"%s\n",str); 
+   	printf("failed to open");
+   	return 0;
+   }
    
-	}
+   while((c=fgetc(fp))!=EOF)
+   {
+   	putchar(c);
+   }
    
    fclose(fp);
    
+   return 0;
 }
-
-   
